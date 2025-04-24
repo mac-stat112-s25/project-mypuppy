@@ -1,5 +1,5 @@
 ---
-title: "I.C"
+title: "Isa.C"
 format: html
 ---
 
