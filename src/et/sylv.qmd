@@ -127,7 +127,13 @@ Each cluster = a behavioral or personality profile. You can describe them as:
 
 The active adventurers The chill lap dogs The obedient family dogs The aloof independents
 
-🧠 Cluster 1: High trainability, affectionate, moderate energy → "Family-Friendly, Obedient Breeds" ⚡ Cluster 2: Super high energy, low trainability → "High-Drive Working Dogs" 🛋️ Cluster 3: Low energy, low shedding → "Laid-Back Companions" 🧼 Cluster 4: High grooming needs, moderate traits → "Show Dogs or Fancy Breeds"
+🧠 Cluster 1: High trainability, affectionate, moderate energy → "Family-Friendly, Obedient Breeds"
+
+⚡ Cluster 2: Super high energy, low trainability → "High-Drive Working Dogs"
+
+🛋️ Cluster 3: Low energy, low shedding → "Laid-Back Companions"
+
+🧼 Cluster 4: High grooming needs, moderate traits → "Show Dogs or Fancy Breeds"
 
 ```{r}
 
