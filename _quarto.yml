@@ -12,7 +12,7 @@ project:
 
 book:
   title: "project title"
-  author: ["student 1 first and last name", "student 2 first and last name", "student 3 first and last name"]
+  author: ["Isa Chen", "Sylvie Liu", "Bethany Wang"]
   date: today  # use today to update date published based on last time project was edited
   date-format: full
   # favicon: images/logo.png
@@ -41,6 +41,7 @@ book:
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
+
 
 
 

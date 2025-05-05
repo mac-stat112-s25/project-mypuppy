@@ -1,13 +1,38 @@
 ---
 title: "Report"
 execute: 
-  echo: true      # change to true to show the code
-code-fold: false  # change to true to fold the code chunks
+  warning: false
+  error: false
+  echo: false      # change to true to show the code
+code-fold: false # change to true to fold the code chunks
+  
 ---
 
-Your report will go here.
-
 ```{r}
-# this is a test code
+# Get the Data
+
+# Read in with tidytuesdayR package 
+# Install from CRAN via: install.packages("tidytuesdayR")
+# This loads the readme and all the datasets for the week of interest
+
+# Either ISO-8601 date or year/week works!
+
+tuesdata <- tidytuesdayR::tt_load('2022-02-01')
+tuesdata <- tidytuesdayR::tt_load(2022, week = 5)
+
+breed_traits <- tuesdata$breed_traits
+
+# Or read in the data manually
+
+breed_traits <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/breed_traits.csv')
+trait_description <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/trait_description.csv')
+breed_rank_all <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/breed_rank.csv')
+
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(scales)
+
 ```
 

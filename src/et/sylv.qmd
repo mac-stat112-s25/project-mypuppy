@@ -123,7 +123,8 @@ fviz_nbclust(trait_data, kmeans, method = "wss") +
 
 ```
 
-Each cluster = a behavioral or personality profile. You can describe them as:
+Each cluster = a behavioral or personality profile.
+You can describe them as:
 
 The active adventurers The chill lap dogs The obedient family dogs The aloof independents
 
