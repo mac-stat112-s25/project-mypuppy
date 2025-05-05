@@ -3,3 +3,122 @@ title: "Isa.C"
 format: html
 ---
 
+```{r}
+# Get the Data
+
+# Read in with tidytuesdayR package 
+# Install from CRAN via: install.packages("tidytuesdayR")
+# This loads the readme and all the datasets for the week of interest
+
+# Either ISO-8601 date or year/week works!
+
+tuesdata <- tidytuesdayR::tt_load('2022-02-01')
+tuesdata <- tidytuesdayR::tt_load(2022, week = 5)
+
+breed_traits <- tuesdata$breed_traits
+
+# Or read in the data manually
+
+breed_traits <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/breed_traits.csv')
+trait_description <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/trait_description.csv')
+breed_rank_all <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/breed_rank.csv')
+
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(scales)
+
+
+```
+
+```{r}
+head(breed_traits)
+
+breed_rank_all_clean <- breed_rank_all %>%
+  filter(if_all(c(`2013 Rank`, `2014 Rank`, `2015 Rank`, `2016 Rank`,
+                  `2017 Rank`, `2018 Rank`, `2019 Rank`, `2020 Rank`), ~ !is.na(.)))
+```
+
+# Part 1: overall trend 
+```{r}
+breed_rank_trend <- breed_rank_all_clean %>%
+  mutate(Rank_Change = as.numeric(`2013 Rank`) - as.numeric(`2020 Rank`)) %>%
+  arrange(desc(Rank_Change)) 
+```
+
+```{r}
+breed_rank_trend <- breed_rank_all_clean %>%
+  mutate(Rank_Change = as.numeric(`2013 Rank`) - as.numeric(`2020 Rank`))
+
+top_gainers <- breed_rank_trend %>% 
+  slice_max(Rank_Change, n = 5)
+
+top_losers <- breed_rank_trend %>% 
+  slice_min(Rank_Change, n = 5)
+
+gainers_long <- top_gainers %>%
+  pivot_longer(cols = starts_with("20"), names_to = "Year", values_to = "Rank") %>%
+  mutate(Year = str_remove(Year, " Rank") %>% as.integer())
+
+ggplot(gainers_long, aes(x = Year, y = as.numeric(Rank), color = Breed)) +
+  geom_line(size = 1.2) +
+  scale_y_reverse() +
+  labs(title = "Top 5 Rising Dog Breeds (2013–2020)",
+       y = "Popularity Rank (Lower is More Popular)",
+       x = "Year") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+losers_long <- top_losers %>%
+  pivot_longer(cols = starts_with("20"), names_to = "Year", values_to = "Rank") %>%
+  mutate(Year = str_remove(Year, " Rank") %>% as.integer())
+
+ggplot(losers_long, aes(x = Year, y = as.numeric(Rank), color = Breed)) +
+  geom_line(size = 1.2) +
+  scale_y_reverse() +
+  labs(title = "Top 5 Falling Dog Breeds (2013–2020)",
+       y = "Popularity Rank (Lower is More Popular)",
+       x = "Year") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+# More Part 1
+```{r} 
+rank_traits <- breed_rank_all_clean %>%
+  left_join(breed_traits, by = "Breed")
+
+rank_traits <- rank_traits %>%
+  mutate(Rank_Change = as.numeric(`2013 Rank`) - as.numeric(`2020 Rank`),
+         Trend = case_when(
+           Rank_Change > 0 ~ "Rising",
+           Rank_Change < 0 ~ "Falling",
+           TRUE ~ "Stable"
+         ))
+
+trait_score_cols <- c("Affectionate With Family", "Good With Young Children",
+                      "Good With Other Dogs", "Shedding Level", "Coat Grooming Frequency",
+                      "Drooling Level", "Openness To Strangers", "Playfulness Level",
+                      "Watchdog/Protective Nature", "Adaptability Level",
+                      "Trainability Level", "Energy Level", "Barking Level", 
+                      "Mental Stimulation Needs")
+
+long_trait <- rank_traits %>%
+  filter(Trend %in% c("Rising", "Falling")) %>%
+  select(Breed, Trend, all_of(trait_score_cols)) %>%
+  pivot_longer(cols = -c(Breed, Trend), names_to = "Trait", values_to = "Score") %>%
+  mutate(Score = as.numeric(Score))
+
+trait_summary <- long_trait %>%
+  group_by(Trend, Trait) %>%
+  summarize(Average_Score = mean(Score, na.rm = TRUE), .groups = "drop")
+
+ggplot(trait_summary, aes(x = Trait, y = Average_Score, fill = Trend)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  labs(title = "Trait Comparison: Rising vs. Falling Dog Breeds",
+       y = "Average Trait Score", x = "Trait") +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
