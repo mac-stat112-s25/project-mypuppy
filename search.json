@@ -1,0 +1,34 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "project title",
+    "section": "",
+    "text": "Your report will go here.\n\n# this is a test code",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Report</span>"
+    ]
+  },
+  {
+    "objectID": "src/appx/proposal.html",
+    "href": "src/appx/proposal.html",
+    "title": "Appendix A — Proposal",
+    "section": "",
+    "text": "Your proposal will go here.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Proposal</span>"
+    ]
+  },
+  {
+    "objectID": "src/appx/case-study.html",
+    "href": "src/appx/case-study.html",
+    "title": "Appendix B — Case Study",
+    "section": "",
+    "text": "Your case study will go here.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Case Study</span>"
+    ]
+  }
+]
