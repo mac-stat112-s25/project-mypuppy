@@ -42,7 +42,6 @@ book:
     - data/trait_description.csv
     - data/breed_rank.csv
     
-    
  
     - part: "Effective Teamwork"
       chapters: 
