@@ -19,37 +19,31 @@ Culturally, it invites us to consider how our evolving relationships with animal
 
 # Research Question
 
--   Which dog breeds are gaining or losing popularity over time, and why?
--   Are there consistent behavioral or physical traits that correlate with these popularity trends?
--   Can we use machine learning techniques (like K-means clustering) to group breeds by traits and uncover latent categories of dog types that appeal to different segments of the population?
--   At its core, the project seeks to reveal patterns in how Americans relate to dogs—and how that relationship is shifting over time.
+This project explores shifting trends in dog breed popularity in the United States, aiming to uncover which breeds are gaining or losing favor over time and why. It investigates whether consistent behavioral or physical traits correlate with these popularity changes, providing insight into broader societal preferences. By applying machine learning techniques such as K-means clustering, the project seeks to group breeds based on shared characteristics and identify latent categories that appeal to different segments of the population. Ultimately, the goal is to reveal meaningful patterns in how Americans relate to dogs—and how that relationship is evolving over time.
 
 # Background
 
-To fully appreciate the insights from this analysis, the audience should understand a few key concepts:
+To interpret the findings of this analysis, it is essential to understand several key concepts.
 
--   Dog Breed Rankings: Every year, the American Kennel Club (AKC) publishes breed popularity rankings based on registration data. A lower rank means higher popularity (e.g., Rank #1 = most popular breed).
--   Breed Traits: The AKC also scores breeds on a range of characteristics, such as Trainability, Energy Level, Drooling, Shedding, and Affectionate With Family, typically on a 1–5 scale.
--   Popularity Shift (Rank Change): Defined as the difference in a breed’s ranking between 2013 and 2020. A positive value indicates rising popularity, and a negative value shows decline. By combining these data sources and methods, the project provides a comprehensive picture of breed trends and underlying preferences in dog ownership.
--   K-Means Clustering: This is a machine learning method used to group similar items (in this case, dog breeds) based on multiple numeric traits. It helps uncover hidden groupings or "types" of dogs that might not align with traditional breed groupings.
+The American Kennel Club (AKC) publishes annual breed popularity rankings based on registration data, where a lower rank indicates higher popularity. Additionally, the AKC provides trait scores for each breed—such as Trainability, Energy Level, and Affectionate With Family—on a standardized 1 to 5 scale.
+
+Popularity Shift is defined as the change in a breed’s ranking between 2013 and 2020. A positive value denotes increased popularity over time, while a negative value indicates a decline.
+
+This project also employs K-means clustering, a machine learning technique used to group breeds based on trait similarities. This method enables the identification of latent categories that may not align with traditional breed groupings, offering deeper insight into evolving preferences in dog ownership.
 
 # Data
 
 -   **Data collection**
 
-    -   What was collected? Three datasets were collected:
-        -   breed_traits.csv: traits of various dog breeds (e.g., friendliness, energy, grooming needs)
-        -   trait_description.csv: descriptions of each trait used in the breed dataset
-        -   breed_rank.csv: AKC (American Kennel Club) dog breed popularity rankings from 2013 to 2020
-    -   When was it collected?
-        -   Popularity data spans from 2013 to 2020. Trait data is not timestamped but reflects general breed characteristics.
-    -   Why was it collected?
-        -   The data was compiled for the TidyTuesday community to explore trends in dog breed popularity and characteristics for learning, visualization, and analysis practice.
-    -   How was it collected originally?
-        -   Breed rankings were sourced directly from AKC reports.
-        -   Breed traits and descriptions were scraped or compiled by host contributors for TidyTuesday.
-    -   Who collected it?
-        -   The dataset was curated by TidyTuesday organizers, primarily data scientist Thomas Mock and contributors from the R for Data Science community.
+This project uses three main datasets: breed_traits.csv, which includes various characteristics of dog breeds such as friendliness, energy level, and grooming needs; trait_description.csv, which provides explanations for each trait; and breed_rank.csv, which contains AKC (American Kennel Club) popularity rankings for dog breeds from 2013 to 2020.
+
+The popularity data covers an eight-year period from 2013 to 2020. The trait data does not include specific timestamps but represents general, widely accepted characteristics of each breed.
+
+These datasets were collected for the TidyTuesday community to support practice in data visualization, analysis, and exploratory learning around dog breed trends and traits.
+
+The breed rankings were sourced directly from official AKC reports. The breed traits and trait descriptions were scraped or compiled by contributors to the project.
+
+The full dataset was curated by TidyTuesday organizers, primarily by data scientist Thomas Mock and other contributors from the R for Data Science community.
 
 -   **Data Acquisition**
 
@@ -381,7 +375,7 @@ print(cluster_traits_summary)
 
 ```
 
-### Concliusion {.unnumbered}
+### Conclusion {.unnumbered}
 
 In the evolving world of pet ownership, America's favorite dogs reflect more than just cuteness or tradition — they mirror our values, lifestyles, and changing daily realities. Through breed popularity data and trait analysis, a clear narrative emerges: the most beloved dog breeds today are those that are loyal, affectionate, adaptable, and easy to live with.
 
