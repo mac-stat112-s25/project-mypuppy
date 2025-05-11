@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Isa Chen">
 <meta name="author" content="Sylvie Liu">
 <meta name="author" content="Bethany Wang">
-<title>project title</title>
+
+<title>My Puppy - What Makes a Dog Popular?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -56,13 +59,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./src/appx/proposal.html" rel="next">
+<link href="./data/breed_traits.csv" rel="next">
 <script src="site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -75,7 +79,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -101,7 +106,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script type="text/javascript" charset="UTF-8">
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
@@ -116,13 +123,20 @@ cookieconsent.run({
 "language":"en"
   });
 });
-</script><style>html{ scroll-behavior: smooth; }</style>
+</script> 
+  
+<style>html{ scroll-behavior: smooth; }</style>
+
+
 <link rel="stylesheet" href="style/custom.css">
 </head>
+
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -133,9 +147,13 @@ cookieconsent.run({
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">sidebar title</a> 
         <div class="sidebar-tools-main">
@@ -155,7 +173,7 @@ cookieconsent.run({
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Report</span></span></a>
@@ -164,13 +182,59 @@ cookieconsent.run({
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Effective Teamwork</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/et/Isa.C.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Isa.C</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/et/Sylvie.L.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sylvie.L</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">EDA</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/eda/Isa.C.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Isa.C</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./src/eda/Sylvie.L.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sylvie.L</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./src/appx/proposal.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Proposal</span></span></a>
@@ -183,22 +247,35 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><span class="header-section-number">1</span> Motivation</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question"><span class="header-section-number">2</span> Research Question</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">3</span> Background</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">4</span> Data</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">project title</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">My Puppy - What Makes a Dog Popular?</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     <div>
     <div class="quarto-title-meta-heading">Authors</div>
@@ -212,7 +289,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Monday, May 5, 2025</p>
+      <p class="date">Sunday, May 11, 2025</p>
     </div>
   </div>
   
@@ -223,10 +300,101 @@ cookieconsent.run({
 
 </header>
 
+
+<section id="motivation" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Motivation</h1>
+<p>In a world where dogs are considered not just pets but beloved family members, understanding what drives the popularity of certain breeds offers a unique lens into broader societal trends. This project began with a simple question: Why do some dog breeds surge in popularity while others quietly fade from the spotlight? As dog ownership continues to rise across the U.S.—particularly among millennials and Gen Z—shifting breed preferences reflect larger lifestyle changes, including increased urban living, smaller households, and a growing emphasis on emotional well-being.</p>
+<p>Beyond curiosity, this project has real-world relevance. For pet industry professionals, breeders, shelters, and prospective dog owners, identifying the traits linked to breed popularity can inform smarter decisions, from breeding strategies to adoption campaigns. Culturally, it invites us to consider how our evolving relationships with animals mirror the ways our lives and values are changing.</p>
+</section>
+<section id="research-question" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Research Question</h1>
+<ul>
+<li>Which dog breeds are gaining or losing popularity over time, and why?</li>
+<li>Are there consistent behavioral or physical traits that correlate with these popularity trends?</li>
+<li>Can we use machine learning techniques (like K-means clustering) to group breeds by traits and uncover latent categories of dog types that appeal to different segments of the population?</li>
+<li>At its core, the project seeks to reveal patterns in how Americans relate to dogs—and how that relationship is shifting over time.</li>
+</ul>
+</section>
+<section id="background" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Background</h1>
+<p>To fully appreciate the insights from this analysis, the audience should understand a few key concepts:</p>
+<ul>
+<li>Dog Breed Rankings: Every year, the American Kennel Club (AKC) publishes breed popularity rankings based on registration data. A lower rank means higher popularity (e.g., Rank #1 = most popular breed).</li>
+<li>Breed Traits: The AKC also scores breeds on a range of characteristics, such as Trainability, Energy Level, Drooling, Shedding, and Affectionate With Family, typically on a 1–5 scale.</li>
+<li>Popularity Shift (Rank Change): Defined as the difference in a breed’s ranking between 2013 and 2020. A positive value indicates rising popularity, and a negative value shows decline. By combining these data sources and methods, the project provides a comprehensive picture of breed trends and underlying preferences in dog ownership.</li>
+<li>K-Means Clustering: This is a machine learning method used to group similar items (in this case, dog breeds) based on multiple numeric traits. It helps uncover hidden groupings or “types” of dogs that might not align with traditional breed groupings.</li>
+</ul>
+</section>
+<section id="data" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Data</h1>
+<ul>
+<li><p><strong>Data collection</strong></p>
+<ul>
+<li>What was collected? Three datasets were collected:
+<ul>
+<li>breed_traits.csv: traits of various dog breeds (e.g., friendliness, energy, grooming needs)</li>
+<li>trait_description.csv: descriptions of each trait used in the breed dataset</li>
+<li>breed_rank.csv: AKC (American Kennel Club) dog breed popularity rankings from 2013 to 2020</li>
+</ul></li>
+<li>When was it collected?
+<ul>
+<li>Popularity data spans from 2013 to 2020. Trait data is not timestamped but reflects general breed characteristics.</li>
+</ul></li>
+<li>Why was it collected?
+<ul>
+<li>The data was compiled for the TidyTuesday community to explore trends in dog breed popularity and characteristics for learning, visualization, and analysis practice.</li>
+</ul></li>
+<li>How was it collected originally?
+<ul>
+<li>Breed rankings were sourced directly from AKC reports.</li>
+<li>Breed traits and descriptions were scraped or compiled by host contributors for TidyTuesday.</li>
+</ul></li>
+<li>Who collected it?
+<ul>
+<li>The dataset was curated by TidyTuesday organizers, primarily data scientist Thomas Mock and contributors from the R for Data Science community.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Data Acquisition</strong></p>
+<ul>
+<li>Where / how did you get the data?
+<ul>
+<li>The data was accessed via the tidytuesdayR R package or downloaded directly from GitHub.</li>
+</ul></li>
+<li>What is the source?
+<ul>
+<li>TidyTuesday GitHub (2022-02-01)</li>
+<li>Original AKC rankings: AKC Website</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Data Understanding</strong></p>
+<ul>
+<li>How much data do you have?
+<ul>
+<li>breed_traits.csv: 195 dog breeds × 23 traits</li>
+<li>breed_rank.csv: Rankings for 195 breeds across 8 years (2013–2020)</li>
+<li>trait_description.csv: 23 trait descriptions</li>
+</ul></li>
+<li>What types of measurements?
+<ul>
+<li>Categorical/ordinal traits (e.g., “Very Low” to “Very High”)</li>
+<li>Yearly rankings (numeric)</li>
+<li>Text descriptions of traits</li>
+</ul></li>
+<li>Anything you needed to clean before getting started?
+<ul>
+<li>Trait values were text-based and needed to be converted to ordered factors or numerical scales for analysis.</li>
+<li>Some breeds had minor inconsistencies in naming between datasets and required matching.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+
 <!-- -->
 
+</section>
 
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -845,11 +1013,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation column-page-right"><div class="nav-page nav-page-previous">
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./src/appx/proposal.html" class="pagination-link" aria-label="Proposal">
-        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Proposal</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data/breed_traits.csv" class="pagination-link" aria-label="">
+        <span class="nav-page-text"></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
@@ -860,40 +1030,77 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-5"><a href="#cb1-5"></a><span class="co">  error: false</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a><span class="co">  echo: false      # change to true to show the code</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a><span class="an">code-fold:</span><span class="co"> false # change to true to fold the code chunks</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">  </span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">---</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="in">```{r}</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="co"># Get the Data</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">---</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="fu"># Motivation</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>In a world where dogs are considered not just pets but beloved family members, understanding what drives the popularity of certain breeds offers a unique lens into broader societal trends.</span>
+<span id="cb1-13"><a href="#cb1-13"></a>This project began with a simple question: Why do some dog breeds surge in popularity while others quietly fade from the spotlight?</span>
+<span id="cb1-14"><a href="#cb1-14"></a>As dog ownership continues to rise across the U.S.—particularly among millennials and Gen Z—shifting breed preferences reflect larger lifestyle changes, including increased urban living, smaller households, and a growing emphasis on emotional well-being.</span>
 <span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co"># Read in with tidytuesdayR package </span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co"># Install from CRAN via: install.packages("tidytuesdayR")</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co"># This loads the readme and all the datasets for the week of interest</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>Beyond curiosity, this project has real-world relevance.</span>
+<span id="cb1-17"><a href="#cb1-17"></a>For pet industry professionals, breeders, shelters, and prospective dog owners, identifying the traits linked to breed popularity can inform smarter decisions, from breeding strategies to adoption campaigns.</span>
+<span id="cb1-18"><a href="#cb1-18"></a>Culturally, it invites us to consider how our evolving relationships with animals mirror the ways our lives and values are changing.</span>
 <span id="cb1-19"><a href="#cb1-19"></a></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="co"># Either ISO-8601 date or year/week works!</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="fu"># Research Question</span></span>
 <span id="cb1-21"><a href="#cb1-21"></a></span>
-<span id="cb1-22"><a href="#cb1-22"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2022-02-01'</span>)</span>
-<span id="cb1-23"><a href="#cb1-23"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="dv">2022</span>, <span class="at">week =</span> <span class="dv">5</span>)</span>
-<span id="cb1-24"><a href="#cb1-24"></a></span>
-<span id="cb1-25"><a href="#cb1-25"></a>breed_traits <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>breed_traits</span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="ss">-   </span>Which dog breeds are gaining or losing popularity over time, and why?</span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="ss">-   </span>Are there consistent behavioral or physical traits that correlate with these popularity trends?</span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="ss">-   </span>Can we use machine learning techniques (like K-means clustering) to group breeds by traits and uncover latent categories of dog types that appeal to different segments of the population?</span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="ss">-   </span>At its core, the project seeks to reveal patterns in how Americans relate to dogs—and how that relationship is shifting over time.</span>
 <span id="cb1-26"><a href="#cb1-26"></a></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># Or read in the data manually</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="fu"># Background</span></span>
 <span id="cb1-28"><a href="#cb1-28"></a></span>
-<span id="cb1-29"><a href="#cb1-29"></a>breed_traits <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/breed_traits.csv'</span>)</span>
-<span id="cb1-30"><a href="#cb1-30"></a>trait_description <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/trait_description.csv'</span>)</span>
-<span id="cb1-31"><a href="#cb1-31"></a>breed_rank_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/breed_rank.csv'</span>)</span>
-<span id="cb1-32"><a href="#cb1-32"></a></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-35"><a href="#cb1-35"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-36"><a href="#cb1-36"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb1-37"><a href="#cb1-37"></a><span class="fu">library</span>(scales)</span>
-<span id="cb1-38"><a href="#cb1-38"></a></span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="in">```</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-29"><a href="#cb1-29"></a>To fully appreciate the insights from this analysis, the audience should understand a few key concepts:</span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="ss">-   </span>Dog Breed Rankings: Every year, the American Kennel Club (AKC) publishes breed popularity rankings based on registration data. A lower rank means higher popularity (e.g., Rank #1 = most popular breed).</span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="ss">-   </span>Breed Traits: The AKC also scores breeds on a range of characteristics, such as Trainability, Energy Level, Drooling, Shedding, and Affectionate With Family, typically on a 1–5 scale.</span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="ss">-   </span>Popularity Shift (Rank Change): Defined as the difference in a breed’s ranking between 2013 and 2020. A positive value indicates rising popularity, and a negative value shows decline. By combining these data sources and methods, the project provides a comprehensive picture of breed trends and underlying preferences in dog ownership.</span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="ss">-   </span>K-Means Clustering: This is a machine learning method used to group similar items (in this case, dog breeds) based on multiple numeric traits. It helps uncover hidden groupings or "types" of dogs that might not align with traditional breed groupings.</span>
+<span id="cb1-35"><a href="#cb1-35"></a></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="fu"># Data</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="ss">-   </span>**Data collection**</span>
+<span id="cb1-39"><a href="#cb1-39"></a></span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="ss">    -   </span>What was collected? Three datasets were collected:</span>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="ss">        -   </span>breed_traits.csv: traits of various dog breeds (e.g., friendliness, energy, grooming needs)</span>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="ss">        -   </span>trait_description.csv: descriptions of each trait used in the breed dataset</span>
+<span id="cb1-43"><a href="#cb1-43"></a><span class="ss">        -   </span>breed_rank.csv: AKC (American Kennel Club) dog breed popularity rankings from 2013 to 2020</span>
+<span id="cb1-44"><a href="#cb1-44"></a><span class="ss">    -   </span>When was it collected?</span>
+<span id="cb1-45"><a href="#cb1-45"></a><span class="ss">        -   </span>Popularity data spans from 2013 to 2020. Trait data is not timestamped but reflects general breed characteristics.</span>
+<span id="cb1-46"><a href="#cb1-46"></a><span class="ss">    -   </span>Why was it collected?</span>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="ss">        -   </span>The data was compiled for the TidyTuesday community to explore trends in dog breed popularity and characteristics for learning, visualization, and analysis practice.</span>
+<span id="cb1-48"><a href="#cb1-48"></a><span class="ss">    -   </span>How was it collected originally?</span>
+<span id="cb1-49"><a href="#cb1-49"></a><span class="ss">        -   </span>Breed rankings were sourced directly from AKC reports.</span>
+<span id="cb1-50"><a href="#cb1-50"></a><span class="ss">        -   </span>Breed traits and descriptions were scraped or compiled by host contributors for TidyTuesday.</span>
+<span id="cb1-51"><a href="#cb1-51"></a><span class="ss">    -   </span>Who collected it?</span>
+<span id="cb1-52"><a href="#cb1-52"></a><span class="ss">        -   </span>The dataset was curated by TidyTuesday organizers, primarily data scientist Thomas Mock and contributors from the R for Data Science community.</span>
+<span id="cb1-53"><a href="#cb1-53"></a></span>
+<span id="cb1-54"><a href="#cb1-54"></a><span class="ss">-   </span>**Data Acquisition**</span>
+<span id="cb1-55"><a href="#cb1-55"></a></span>
+<span id="cb1-56"><a href="#cb1-56"></a><span class="ss">    -   </span>Where / how did you get the data?</span>
+<span id="cb1-57"><a href="#cb1-57"></a><span class="ss">        -   </span>The data was accessed via the tidytuesdayR R package or downloaded directly from GitHub.</span>
+<span id="cb1-58"><a href="#cb1-58"></a><span class="ss">    -   </span>What is the source?</span>
+<span id="cb1-59"><a href="#cb1-59"></a><span class="ss">        -   </span>TidyTuesday GitHub (2022-02-01)</span>
+<span id="cb1-60"><a href="#cb1-60"></a><span class="ss">        -   </span>Original AKC rankings: AKC Website</span>
+<span id="cb1-61"><a href="#cb1-61"></a></span>
+<span id="cb1-62"><a href="#cb1-62"></a><span class="ss">-   </span>**Data Understanding**</span>
+<span id="cb1-63"><a href="#cb1-63"></a></span>
+<span id="cb1-64"><a href="#cb1-64"></a><span class="ss">    -   </span>How much data do you have?</span>
+<span id="cb1-65"><a href="#cb1-65"></a><span class="ss">        -   </span>breed_traits.csv: 195 dog breeds × 23 traits</span>
+<span id="cb1-66"><a href="#cb1-66"></a><span class="ss">        -   </span>breed_rank.csv: Rankings for 195 breeds across 8 years (2013–2020)</span>
+<span id="cb1-67"><a href="#cb1-67"></a><span class="ss">        -   </span>trait_description.csv: 23 trait descriptions</span>
+<span id="cb1-68"><a href="#cb1-68"></a><span class="ss">    -   </span>What types of measurements?</span>
+<span id="cb1-69"><a href="#cb1-69"></a><span class="ss">        -   </span>Categorical/ordinal traits (e.g., “Very Low” to “Very High”)</span>
+<span id="cb1-70"><a href="#cb1-70"></a><span class="ss">        -   </span>Yearly rankings (numeric)</span>
+<span id="cb1-71"><a href="#cb1-71"></a><span class="ss">        -   </span>Text descriptions of traits</span>
+<span id="cb1-72"><a href="#cb1-72"></a><span class="ss">    -   </span>Anything you needed to clean before getting started?</span>
+<span id="cb1-73"><a href="#cb1-73"></a><span class="ss">        -   </span>Trait values were text-based and needed to be converted to ordered factors or numerical scales for analysis.</span>
+<span id="cb1-74"><a href="#cb1-74"></a><span class="ss">        -   </span>Some breeds had minor inconsistencies in naming between datasets and required matching.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -905,6 +1112,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
+
 
 
 <script src="site_libs/quarto-html/zenscroll-min.js"></script>
