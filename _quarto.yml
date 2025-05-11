@@ -38,11 +38,22 @@ book:
 
   chapters:
     - index.qmd
+    - data/breed_traits.csv
+    - data/trait_description.csv
+    - data/breed_rank.csv
+    
  
     - part: "Effective Teamwork"
       chapters: 
       - src/et/Isa.C.qmd
       - src/et/Sylvie.L.qmd
+
+      
+    - part: "EDA"
+      chapters: 
+      - src/eda/Isa.C.qmd
+      - src/eda/Sylvie.L.qmd
+
 
   appendices:
   - src/appx/proposal.qmd
