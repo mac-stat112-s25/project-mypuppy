@@ -72,3 +72,319 @@ To fully appreciate the insights from this analysis, the audience should underst
     -   Anything you needed to clean before getting started?
         -   Trait values were text-based and needed to be converted to ordered factors or numerical scales for analysis.
         -   Some breeds had minor inconsistencies in naming between datasets and required matching.
+        
+        
+        
+## America's Dog Preferences Are Changing: Who's Gaining — and Who's Dropping — in Popularity? {.unnumbered}
+
+Between 2013 and 2020, America’s taste in dogs shifted notably, with certain breeds climbing the popularity ranks and others quietly fading from favor. A recent data analysis from the American Kennel Club’s breed rankings reveals telling trends in canine preferences, hinting at evolving lifestyle needs, aesthetic tastes, and family dynamics.
+
+
+```{r}
+# Get the Data
+
+# read in the data manually
+
+breed_traits <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/breed_traits.csv')
+trait_description <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/trait_description.csv')
+breed_rank_all <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/breed_rank.csv')
+
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(scales)
+
+head(breed_traits)
+
+breed_rank_all_clean <- breed_rank_all %>%
+  filter(if_all(c(`2013 Rank`, `2014 Rank`, `2015 Rank`, `2016 Rank`,
+                  `2017 Rank`, `2018 Rank`, `2019 Rank`, `2020 Rank`), ~ !is.na(.)))
+
+
+
+```
+
+
+### Part 1: overall trend {.unnumbered}
+```{r}
+breed_rank_trend <- breed_rank_all_clean %>%
+  mutate(Rank_Change = as.numeric(`2013 Rank`) - as.numeric(`2020 Rank`)) %>%
+  arrange(desc(Rank_Change)) 
+```
+
+```{r}
+breed_rank_trend <- breed_rank_all_clean %>%
+  mutate(Rank_Change = as.numeric(`2013 Rank`) - as.numeric(`2020 Rank`))
+
+top_gainers <- breed_rank_trend %>% 
+  slice_max(Rank_Change, n = 5)
+
+top_losers <- breed_rank_trend %>% 
+  slice_min(Rank_Change, n = 5)
+
+gainers_long <- top_gainers %>%
+  pivot_longer(cols = starts_with("20"), names_to = "Year", values_to = "Rank") %>%
+  mutate(Year = str_remove(Year, " Rank") %>% as.integer())
+
+ggplot(gainers_long, aes(x = Year, y = as.numeric(Rank), color = Breed)) +
+  geom_line(size = 1.2) +
+  scale_y_reverse() +
+  labs(title = "Top 5 Rising Dog Breeds (2013–2020)",
+       y = "Popularity Rank (Lower is More Popular)",
+       x = "Year") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+losers_long <- top_losers %>%
+  pivot_longer(cols = starts_with("20"), names_to = "Year", values_to = "Rank") %>%
+  mutate(Year = str_remove(Year, " Rank") %>% as.integer())
+
+ggplot(losers_long, aes(x = Year, y = as.numeric(Rank), color = Breed)) +
+  geom_line(size = 1.2) +
+  scale_y_reverse() +
+  labs(title = "Top 5 Falling Dog Breeds (2013–2020)",
+       y = "Popularity Rank (Lower is More Popular)",
+       x = "Year") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+A line chart tracking the top five rising dog breeds shows a clear upward trajectory in popularity between 2013 and 2020. Breeds such as the Beaucerons, Belgian Malinois, and  Cane Corso experienced significant gains, with some jumping more than 20 spots in national ranking.
+
+These breeds tend to be medium to large in size, loyal, quiet, and have high scores in affection and trainability—characteristics increasingly favored by urban middle class and suburban pet owners.
+
+#### More Part 1 {.unnumbered}
+```{r} 
+rank_traits <- breed_rank_all_clean %>%
+  left_join(breed_traits, by = "Breed")
+
+rank_traits <- rank_traits %>%
+  mutate(Rank_Change = as.numeric(`2013 Rank`) - as.numeric(`2020 Rank`),
+         Trend = case_when(
+           Rank_Change > 0 ~ "Rising",
+           Rank_Change < 0 ~ "Falling",
+           TRUE ~ "Stable"
+         ))
+
+trait_score_cols <- c("Affectionate With Family", "Good With Young Children",
+                      "Good With Other Dogs", "Shedding Level", "Coat Grooming Frequency",
+                      "Drooling Level", "Openness To Strangers", "Playfulness Level",
+                      "Watchdog/Protective Nature", "Adaptability Level",
+                      "Trainability Level", "Energy Level", "Barking Level", 
+                      "Mental Stimulation Needs")
+
+long_trait <- rank_traits %>%
+  filter(Trend %in% c("Rising", "Falling")) %>%
+  select(Breed, Trend, all_of(trait_score_cols)) %>%
+  pivot_longer(cols = -c(Breed, Trend), names_to = "Trait", values_to = "Score") %>%
+  mutate(Score = as.numeric(Score))
+
+trait_summary <- long_trait %>%
+  group_by(Trend, Trait) %>%
+  summarize(Average_Score = mean(Score, na.rm = TRUE), .groups = "drop")
+
+ggplot(trait_summary, aes(x = Trait, y = Average_Score, fill = Trend)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  labs(title = "Trait Comparison: Rising vs. Falling Dog Breeds",
+       y = "Average Trait Score", x = "Trait") +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
+
+Conversely, breeds like the Treeing walkers, Chinooks, and Spaniels have seen notable declines in popularity. The line chart for the top five falling breeds reveals a steady downward drift.
+Common traits among these breeds include higher grooming needs, increased drooling, and lower adaptability scores, suggesting that maintenance-heavy dogs are becoming less appealing in modern households.
+
+
+
+### The Traits of the Top (and Bottom) Dogs
+Continue with previous visualizations, we know what type of dogs are popular and have made a summary of them, but what are their specific characteristics?
+In the chart titled “Trait Comparison: Top 10 vs. Bottom 10 Dog Breeds,” we compared the behavioral and physical traits of the most popular breeds with those at the bottom of the popularity list.
+
+```{r}
+rank_long <- breed_rank_all %>%
+  pivot_longer(cols = ends_with("Rank"),
+               names_to = "year",
+               values_to = "rank") %>%
+  mutate(
+    year = str_remove(year, " Rank"),
+    year = as.integer(year)
+  )
+
+
+latest_year <- max(rank_long$year, na.rm = TRUE)
+
+latest_ranks <- rank_long %>%
+  filter(year == latest_year) %>%
+  select(Breed, rank)
+
+
+breed_data <- breed_traits %>%
+  left_join(latest_ranks, by = "Breed")
+
+top_bottom <- breed_data %>%
+  filter(!is.na(rank)) %>%
+  mutate(rank_group = case_when(
+    rank <= 10 ~ "Top 10",
+    rank >= max(rank, na.rm = TRUE) - 9 ~ "Bottom 10",
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(rank_group))
+
+
+numeric_traits <- top_bottom %>%
+  select(where(is.numeric), -rank) %>%
+  names()
+
+trait_long <- top_bottom %>%
+  select(Breed, rank_group, all_of(numeric_traits)) %>%
+  pivot_longer(cols = -c(Breed, rank_group), names_to = "trait", values_to = "score") %>%
+  group_by(rank_group, trait) %>%
+  summarise(mean_score = mean(score, na.rm = TRUE), .groups = "drop")
+
+
+```
+
+
+```{r}
+
+
+ggplot(trait_long, aes(x = reorder(trait, mean_score), y = mean_score, fill = rank_group)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  labs(title = "Trait Comparison: Top 10 vs. Bottom 10 Dog Breeds",
+       x = "Trait",
+       y = "Average Score",
+       fill = "Breed Popularity") +
+  theme_minimal(base_size = 13)
+
+```
+
+A few standout trends emerged:
+Top 10 breeds (like the Beaucerons and Belgian) scored much higher on:
+Affectionate With Family
+Good With Children
+Trainability
+Playfulness
+Bottom 10 breeds were more likely to have:
+Higher Shedding Levels
+Greater Grooming Needs
+Lower Scores for Adaptability and Energy
+This suggests a clear preference for dogs that are easy to care for, eager to please, and great with families. Breeds that are more high-maintenance or aloof — even if charming in their own right — may be falling out of step with modern lifestyles.
+
+### Dividing dogs' characteristics to suitable owners {.unnumbered}
+
+#### K-means/elbow method/clusters {.unnumbered}
+K-Means Clustering: This is a machine learning method used to group similar items (in this case, dog breeds) based on multiple numeric traits. It helps uncover hidden groupings or "types" of dogs that might not align with traditional breed groupings.
+Popularity Shift (Rank Change): Defined as the difference in a breed’s ranking between 2013 and 2020. A positive value indicates rising popularity, and a negative value shows decline.
+
+```{r}
+
+library(cluster)  
+library(factoextra) 
+
+
+rank_long <- breed_rank_all %>%
+  pivot_longer(cols = ends_with("Rank"), 
+               names_to = "year", 
+               values_to = "rank") %>%
+  mutate(year = str_remove(year, " Rank"),
+         year = as.integer(year))
+
+
+latest_ranks <- rank_long %>%
+  filter(year == max(year, na.rm = TRUE)) %>%
+  select(Breed, rank)
+
+
+breed_data <- breed_traits %>%
+  left_join(latest_ranks, by = "Breed") %>%
+  filter(!is.na(rank))
+
+
+trait_data <- breed_data %>%
+  select(where(is.numeric)) %>%
+  select(-rank) %>%  
+  scale()  
+
+
+fviz_nbclust(trait_data, kmeans, method = "wss") + 
+  labs(title = "Elbow Method to Choose Number of Clusters")
+
+
+```
+
+```{r}
+
+set.seed(123)  
+k <- 4
+km <- kmeans(trait_data, centers = k, nstart = 25)
+
+
+breed_clustered <- breed_data %>%
+  mutate(cluster = factor(km$cluster))
+
+# trait-based clustering
+fviz_cluster(km, data = trait_data,
+             geom = "point",
+             main = "Dog Breed Clusters Based on Traits",
+             labelsize = 8,
+             palette = "Set2")
+
+
+breed_clustered %>%
+  group_by(cluster) %>%
+  summarise(avg_rank = mean(rank, na.rm = TRUE),
+            n_breeds = n()) %>%
+  ggplot(aes(x = cluster, y = avg_rank, fill = cluster)) +
+  geom_col() +
+  labs(title = "Average Popularity Rank by Trait Cluster",
+       x = "Cluster",
+       y = "Average Rank (lower = more popular)") +
+  theme_minimal(base_size = 13)
+
+
+```
+
+Each cluster = a behavioral or personality profile.
+You can describe them as:
+
+The active adventurers The chill lap dogs The obedient family dogs The aloof independents
+
+ Cluster 1: High trainability, affectionate, moderate energy → "Family-Friendly, Obedient Breeds"
+ Cluster 2: Super high energy, low trainability → "High-Drive Working Dogs"
+
+️ Cluster 3: Low energy, low shedding → "Laid-Back Companions"
+
+ Cluster 4: High grooming needs, moderate traits → "Show Dogs or Fancy Breeds"
+
+Analyzing the clusters 2-D dimensions visualization and the average popularity rank by traits together we can know, cluster 1 and 3 stand out. 
+Cluster 1 (Family Dogs) had by far the lowest average rank, making them the most popular group.
+Cluster 2 (Adventurers) and Cluster 4 (Show Dogs) lagged behind, possibly due to their high energy or grooming requirements.
+Cluster 3 (Lap Dogs) occupied the middle ground, offering a good compromise for many owners.
+
+#### Traits summary per cluster {.unnumbered}
+
+```{r}
+
+
+cluster_traits_summary <- breed_clustered %>%
+  mutate(cluster = factor(cluster)) %>%
+  group_by(cluster) %>%
+  summarise(across(where(is.numeric), mean, na.rm = TRUE))
+
+
+print(cluster_traits_summary)
+
+
+
+```
+
+### Concliusion {.unnumbered}
+
+In the evolving world of pet ownership, America's favorite dogs reflect more than just cuteness or tradition — they mirror our values, lifestyles, and changing daily realities. Through breed popularity data and trait analysis, a clear narrative emerges: the most beloved dog breeds today are those that are loyal, affectionate, adaptable, and easy to live with.
+
+Machine learning deepened that story, revealing four distinct canine "personality clusters" — from the reliable, trainable family dogs to the independent show dogs and high-energy workers. The most popular breeds overwhelmingly came from clusters that emphasized emotional connection, low maintenance, and versatility, aligning with trends toward urban living, work-from-home routines, and active family dynamics.
+
+Ultimately, this project underscores a simple truth: as our lives evolve, so do our choices in companionship. Today’s top dogs aren’t just pets — they’re partners, confidants, and reflections of who we are.
