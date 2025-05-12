@@ -1,7 +1,4 @@
-# My puppy
-
-Check the project requirements for what should go into this file.
-
+# My Puppy
 
 - This GitHub repository is part of the TidyTuesday project, a weekly data project by the R4DS community. Each week, it provides a dataset and invites R users to explore, analyze, and visualize the data using tidyverse tools. 
 
