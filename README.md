@@ -51,14 +51,14 @@ Creating data visualizations.
 
 4. What does the expected output look like?
 ### Visualization 1
-![Trend Plot 1](images/1.png)
+![Trend Plot 1](image/1.png)
 
 ### Visualization 2
-![Trend Plot 2](images/2.png)
+![Trend Plot 2](image/2.png)
 
 ### Visualization 3
-![Trend Plot 3](images/3.png)
+![Trend Plot 3](image/3.png)
 
 ### Visualization 4
-![Trend Plot 4](images/4.png)
+![Trend Plot 4](image/4.png)
 
