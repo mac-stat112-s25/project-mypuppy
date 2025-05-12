@@ -47,12 +47,14 @@ book:
       chapters: 
       - src/et/Isa.C.qmd
       - src/et/Sylvie.L.qmd
+      - src/et/Bethany.W.qmd
 
       
     - part: "EDA"
       chapters: 
       - src/eda/Isa.C.qmd
       - src/eda/Sylvie.L.qmd
+      - src/eda/Bethany.W.qmd
 
 
   appendices:
