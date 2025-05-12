@@ -11,8 +11,8 @@ project:
 
 
 book:
-  title: "project title"
-  author: ["student 1 first and last name", "student 2 first and last name", "student 3 first and last name"]
+  title: "My Puppy - What Makes a Dog Popular?"
+  author: ["Isa Chen", "Sylvie Liu", "Bethany Wang"]
   date: today  # use today to update date published based on last time project was edited
   date-format: full
   # favicon: images/logo.png
@@ -34,9 +34,28 @@ book:
     style: "docked"
     pinned: true
     search: true
+   
 
   chapters:
     - index.qmd
+    - data/breed_traits.csv
+    - data/trait_description.csv
+    - data/breed_rank.csv
+    
+ 
+    - part: "Effective Teamwork"
+      chapters: 
+      - src/et/Isa.C.qmd
+      - src/et/Sylvie.L.qmd
+      - src/et/Bethany.W.qmd
+
+      
+    - part: "EDA"
+      chapters: 
+      - src/eda/Isa.C.qmd
+      - src/eda/Sylvie.L.qmd
+      - src/eda/Bethany.W.qmd
+
 
   appendices:
   - src/appx/proposal.qmd

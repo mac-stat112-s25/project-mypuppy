@@ -1,5 +1,12 @@
 ---
 title: "Proposal"
 ---
+Project Name: My Puppy 
+Team Members: Isa, Sylvie, Bethany 
+Short Description: This project explores how dog breed popularity in the U.S. changed from 2013 to 2020, and what traits are linked to those changes. We found that rising breeds tend to be more affectionate, trainable, and adaptable, while falling breeds often require more grooming or are less family-friendly.
+Inspiration: We all love dogs so we decided to do a project on it. 
+Plan: 
+First week: work on possible ideas for plots and codes. 
+Second week: finalize codes and work on presentation. 
+Isa and Sylvie will work on the codes and Bethany will work on the miscellaneous things. 
 
-Your proposal will go here.

@@ -1,5 +1,16 @@
 ---
 title: "Case Study"
 ---
+Case: Fortune Cookies 
 
-Your case study will go here.
+- The first things I noticed is a nice hook to draw my attention to the topic 
+
+- Transition the story into research methods and research question. 
+
+- Introduce and explain the dataset. 
+
+- Show colorful plots. 
+
+- Introduce the second part of the research question. 
+
+- End with a motivating conclusion 

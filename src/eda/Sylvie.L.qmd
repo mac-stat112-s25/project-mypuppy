@@ -1,0 +1,184 @@
+---
+title: "Sylvie.L"
+format: html
+editor: visual
+---
+
+```{r}
+
+library(tidyverse)
+library(tidytuesdayR)
+library(dplyr)
+breed_traits <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/breed_traits.csv')
+trait_description <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/trait_description.csv')
+breed_rank_all <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-02-01/breed_rank.csv')
+
+
+
+```
+
+question 2
+
+```{r}
+rank_long <- breed_rank_all %>%
+  pivot_longer(cols = ends_with("Rank"),
+               names_to = "year",
+               values_to = "rank") %>%
+  mutate(
+    year = str_remove(year, " Rank"),
+    year = as.integer(year)
+  )
+
+
+latest_year <- max(rank_long$year, na.rm = TRUE)
+
+latest_ranks <- rank_long %>%
+  filter(year == latest_year) %>%
+  select(Breed, rank)
+
+
+breed_data <- breed_traits %>%
+  left_join(latest_ranks, by = "Breed")
+
+
+
+```
+
+```{r}
+
+top_bottom <- breed_data %>%
+  filter(!is.na(rank)) %>%
+  mutate(rank_group = case_when(
+    rank <= 10 ~ "Top 10",
+    rank >= max(rank, na.rm = TRUE) - 9 ~ "Bottom 10",
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(rank_group))
+
+
+numeric_traits <- top_bottom %>%
+  select(where(is.numeric), -rank) %>%
+  names()
+
+trait_long <- top_bottom %>%
+  select(Breed, rank_group, all_of(numeric_traits)) %>%
+  pivot_longer(cols = -c(Breed, rank_group), names_to = "trait", values_to = "score") %>%
+  group_by(rank_group, trait) %>%
+  summarise(mean_score = mean(score, na.rm = TRUE), .groups = "drop")
+
+
+```
+
+```{r}
+
+
+ggplot(trait_long, aes(x = reorder(trait, mean_score), y = mean_score, fill = rank_group)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  labs(title = "Trait Comparison: Top 10 vs. Bottom 10 Dog Breeds",
+       x = "Trait",
+       y = "Average Score",
+       fill = "Breed Popularity") +
+  theme_minimal(base_size = 13)
+
+
+
+```
+
+question 3
+
+```{r}
+
+library(cluster)  
+library(factoextra) 
+
+
+rank_long <- breed_rank_all %>%
+  pivot_longer(cols = ends_with("Rank"), 
+               names_to = "year", 
+               values_to = "rank") %>%
+  mutate(year = str_remove(year, " Rank"),
+         year = as.integer(year))
+
+
+latest_ranks <- rank_long %>%
+  filter(year == max(year, na.rm = TRUE)) %>%
+  select(Breed, rank)
+
+
+breed_data <- breed_traits %>%
+  left_join(latest_ranks, by = "Breed") %>%
+  filter(!is.na(rank))
+
+
+trait_data <- breed_data %>%
+  select(where(is.numeric)) %>%
+  select(-rank) %>%  
+  scale()  
+
+
+fviz_nbclust(trait_data, kmeans, method = "wss") + 
+  labs(title = "Elbow Method to Choose Number of Clusters")
+
+
+```
+
+Each cluster = a behavioral or personality profile.
+You can describe them as:
+
+The active adventurers The chill lap dogs The obedient family dogs The aloof independents
+
+🧠 Cluster 1: High trainability, affectionate, moderate energy → "Family-Friendly, Obedient Breeds"
+
+⚡ Cluster 2: Super high energy, low trainability → "High-Drive Working Dogs"
+
+🛋️ Cluster 3: Low energy, low shedding → "Laid-Back Companions"
+
+🧼 Cluster 4: High grooming needs, moderate traits → "Show Dogs or Fancy Breeds"
+
+```{r}
+
+set.seed(123)  
+k <- 4
+km <- kmeans(trait_data, centers = k, nstart = 25)
+
+
+breed_clustered <- breed_data %>%
+  mutate(cluster = factor(km$cluster))
+
+# trait-based clustering
+fviz_cluster(km, data = trait_data,
+             geom = "point",
+             main = "Dog Breed Clusters Based on Traits",
+             labelsize = 8,
+             palette = "Set2")
+
+
+breed_clustered %>%
+  group_by(cluster) %>%
+  summarise(avg_rank = mean(rank, na.rm = TRUE),
+            n_breeds = n()) %>%
+  ggplot(aes(x = cluster, y = avg_rank, fill = cluster)) +
+  geom_col() +
+  labs(title = "Average Popularity Rank by Trait Cluster",
+       x = "Cluster",
+       y = "Average Rank (lower = more popular)") +
+  theme_minimal(base_size = 13)
+
+
+```
+
+```{r}
+
+#  trait summary per cluster
+cluster_traits_summary <- breed_clustered %>%
+  mutate(cluster = factor(cluster)) %>%
+  group_by(cluster) %>%
+  summarise(across(where(is.numeric), mean, na.rm = TRUE))
+
+
+print(cluster_traits_summary)
+
+
+
+```
